@@ -1,32 +1,25 @@
 <template>
     <v-container fluid>
         <v-layout>
-            <h1>How To Use Page</h1>
-                <div class="flex-container">
-                    <Block :border="true"/>
-                    <Block :border="true"/>
-                    <Block :border="true"/>
-                    <Block :border="true"/>
-                    <Block :border="true"/>
-                    <Block :border="true"/>
-                </div>
+            <maze />
         </v-layout>
     </v-container>
 </template>
+
 <script>
-import Block from '../components/Block';
+import Maze from '../components/Maze';
 export default {
     name: 'HowToUse',
     components: {
-        Block
+        Maze
     }
 };
 </script>
 <style scoped>
-.flex-container {
-  display: flex;
-  height: 300px;
-  justify-content: center;
-  align-items: center;
+.grid-container {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(7, 50px);
+    grid-template-rows: repeat(7, 50px);
 }
 </style>

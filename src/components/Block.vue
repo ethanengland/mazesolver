@@ -4,8 +4,8 @@
         :color="color"
         elevation="10"
         class="mx-auto"
-        height="100"
-        width="100"
+        height="50"
+        width="50"
     ></v-sheet>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     name: 'Block',
     data() {
         return {
-            colors: ['black', 'white', 'red', 'green'],
+            colors: ['white', 'black', 'red', 'green'],
             index: 0
         };
     },
@@ -23,6 +23,9 @@ export default {
     },
     computed: {
         color: function() {
+            if (this.border === true) {
+                return 'black';
+            }
             return this.colors[this.index];
         }
     },

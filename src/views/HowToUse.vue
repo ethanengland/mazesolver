@@ -2,7 +2,14 @@
     <v-container fluid>
         <v-layout>
             <h1>How To Use Page</h1>
-            <Block color="black" />
+                <div class="flex-container">
+                    <Block :border="true"/>
+                    <Block :border="true"/>
+                    <Block :border="true"/>
+                    <Block :border="true"/>
+                    <Block :border="true"/>
+                    <Block :border="true"/>
+                </div>
         </v-layout>
     </v-container>
 </template>
@@ -15,4 +22,11 @@ export default {
     }
 };
 </script>
-<style scoped></style>
+<style scoped>
+.flex-container {
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+</style>

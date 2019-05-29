@@ -2,7 +2,7 @@
     <v-sheet
         @click="cycleColor()"
         :color="color"
-        elevation="5"
+        elevation="10"
         class="mx-auto"
         height="100"
         width="100"
@@ -14,23 +14,24 @@ export default {
     name: 'Block',
     data() {
         return {
-            colors: ['Black', 'White', 'Red', 'Green'],
-            color: 'Black',
+            colors: ['black', 'white', 'red', 'green'],
             index: 0
         };
     },
     props: {
-        clickable: Boolean
+        border: Boolean
     },
     computed: {
-        watchColor: function() {
-            return this.color;
+        color: function() {
+            return this.colors[this.index];
         }
     },
     methods: {
         cycleColor: function() {
-            if (this.index == 4) this.index = 0;
-            this.color = this.colors[this.index++];
+            if (this.border === false) {
+                if (this.index == 3) this.index = 0;
+                else this.index++;
+            }
         }
     }
 };

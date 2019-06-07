@@ -1,59 +1,60 @@
 <template>
-    <div class="grid-container">
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-        <Block :border="true" />
-    </div>
+  <div class="grid-container">
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+    <Block :border="true"/>
+  </div>
 </template>
 
 <script>
 import Block from '../components/Block';
+import Graph from '../graph.js';
 export default {
     name: 'Maze',
     components: {
@@ -68,6 +69,11 @@ export default {
             default: 7,
             type: Number
         }
+    },
+    data() {
+        return {
+            graph: new Graph(this.width * this.height)
+        };
     }
 };
 </script>

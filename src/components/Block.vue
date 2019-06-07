@@ -1,12 +1,12 @@
 <template>
-    <v-sheet
-        @click="cycleColor()"
-        :color="color"
-        elevation="10"
-        class="mx-auto"
-        height="50"
-        width="50"
-    ></v-sheet>
+  <v-sheet
+    @click="cycleColor()"
+    :color="color"
+    elevation="10"
+    class="mx-auto"
+    height="50"
+    width="50"
+  ></v-sheet>
 </template>
 
 <script>

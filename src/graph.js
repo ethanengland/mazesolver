@@ -1,92 +1,91 @@
-// create a graph class 
-export default class Graph {
-    // defining vertex array and 
-    // adjacent list 
-    constructor(noOfVertices) {
-        this.noOfVertices = noOfVertices;
-        this.AdjList = new Map();
-    }
+// // create a graph class
+// export default class Graph {
+//     // defining vertex array and
+//     // adjacent list
+//     constructor(noOfVertices) {
+//         this.noOfVertices = noOfVertices;
+//         this.AdjList = new Map();
+//     }
 
-    // functions to be implemented 
+//     // functions to be implemented
 
-    // add vertex to the graph 
-    addVertex(v) {
-        // initialize the adjacent list with a 
-        // null array 
-        this.AdjList.set(v, []);
-    }
+//     // add vertex to the graph
+//     addVertex(v) {
+//         // initialize the adjacent list with a
+//         // null array
+//         this.AdjList.set(v, []);
+//     }
 
-    // add edge to the graph 
-    addEdge(v, w) {
-        // get the list for vertex v and put the 
-        // vertex w denoting edge between v and w 
-        this.AdjList.get(v).push(w);
+//     // add edge to the graph
+//     addEdge(v, w) {
+//         // get the list for vertex v and put the
+//         // vertex w denoting edge between v and w
+//         this.AdjList.get(v).push(w);
 
-        // Since graph is undirected, 
-        // add an edge from w to v also 
-        this.AdjList.get(w).push(v);
-    }
+//         // Since graph is undirected,
+//         // add an edge from w to v also
+//         this.AdjList.get(w).push(v);
+//     }
 
-    // Prints the vertex and adjacency list 
-    printGraph() {
-        // get all the vertices 
-        var get_keys = this.AdjList.keys();
+//     // Prints the vertex and adjacency list
+//     printGraph() {
+//         // get all the vertices
+//         var get_keys = this.AdjList.keys();
 
-        // iterate over the vertices 
-        for (var i of get_keys) {
-            // great the corresponding adjacency list 
-            // for the vertex 
-            var get_values = this.AdjList.get(i);
-            var conc = "";
+//         // iterate over the vertices
+//         for (var i of get_keys) {
+//             // great the corresponding adjacency list
+//             // for the vertex
+//             var get_values = this.AdjList.get(i);
+//             var conc = '';
 
-            // iterate over the adjacency list 
-            // concatenate the values into a string 
-            for (var j of get_values)
-                conc += j + " ";
+//             // iterate over the adjacency list
+//             // concatenate the values into a string
+//             for (var j of get_values) conc += j + ' ';
 
-            // print the vertex and its adjacency list 
-            console.log(i + " -> " + conc);
-        }
-    }
+//             // print the vertex and its adjacency list
+//             console.log(i + ' -> ' + conc);
+//         }
+//     }
 
+//     // https://www.geeksforgeeks.org/implementation-graph-javascript/
+//     // function to performs BFS
+//     bfs(startingNode) {
+//         // create a visited array
+//         var visited = [];
+//         var pred = [];
+//         for (var i = 0; i < this.noOfVertices; i++) visited[i] = false;
 
-    // https://www.geeksforgeeks.org/implementation-graph-javascript/
-    // function to performs BFS 
-    bfs(startingNode) {
+//         // Create an object for queue
+//         var q = new Queue();
 
-        // create a visited array 
-        var visited = [];
-        for (var i = 0; i < this.noOfVertices; i++)
-            visited[i] = false;
+//         // add the starting node to the queue
+//         visited[startingNode] = true;
+//         q.enqueue(startingNode);
 
-        // Create an object for queue 
-        var q = new Queue();
+//         // loop until queue is element
+//         while (!q.isEmpty()) {
+//             // get the element from the queue
+//             var getQueueElement = q.dequeue();
 
-        // add the starting node to the queue 
-        visited[startingNode] = true;
-        q.enqueue(startingNode);
+//             // passing the current vertex to callback funtion
+//             console.log(getQueueElement);
 
-        // loop until queue is element 
-        while (!q.isEmpty()) {
-            // get the element from the queue 
-            var getQueueElement = q.dequeue();
+//             // get the adjacent list for current vertex
+//             var get_List = this.AdjList.get(getQueueElement);
 
-            // passing the current vertex to callback funtion 
-            console.log(getQueueElement);
+//             // loop through the list and add the element to the
+//             // queue if it is not processed yet
+//             for (var i in get_List) {
+//                 var neigh = get_List[i];
 
-            // get the adjacent list for current vertex 
-            var get_List = this.AdjList.get(getQueueElement);
+//                 if (!visited[neigh]) {
+//                     visited[neigh] = true;
+//                     pred[get_List[i]] = neigh;
 
-            // loop through the list and add the element to the 
-            // queue if it is not processed yet 
-            for (var i in get_List) {
-                var neigh = get_List[i];
-
-                if (!visited[neigh]) {
-                    visited[neigh] = true;
-                    q.enqueue(neigh);
-                }
-            }
-        }
-    }
-}
+//                     q.enqueue(neigh);
+//                 }
+//             }
+//         }
+//     }
+// }

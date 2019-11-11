@@ -5,6 +5,8 @@ import router from './router';
 import store from './store';
 import Vuetify from 'vuetify';
 
+window.eventBus = new Vue();
+
 Vue.use(Vuetify);
 
 Vue.config.productionTip = false;

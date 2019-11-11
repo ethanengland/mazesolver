@@ -1,80 +1,19 @@
 <template>
-  <div class="grid-container">
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-    <Block :border="true"/>
-  </div>
+    <div class="grid-container">
+        <Block v-for="b in getBlocks" :id="b.id" :key="b.id" />
+    </div>
 </template>
 
 <script>
+import store from '../store';
 import Block from '../components/Block';
-import Graph from '../graph.js';
+import { mapGetters } from 'vuex';
 export default {
     name: 'Maze',
     components: {
         Block
     },
-    props: {
-        width: {
-            default: 7,
-            type: Number
-        },
-        height: {
-            default: 7,
-            type: Number
-        }
-    },
-    data() {
-        return {
-            graph: new Graph(this.width * this.height)
-        };
-    }
+    computed: mapGetters(['getBlocks'])
 };
 </script>
 

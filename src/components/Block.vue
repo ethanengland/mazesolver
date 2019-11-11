@@ -1,12 +1,12 @@
 <template>
-  <v-sheet
-    @click="cycleColor()"
-    :color="color"
-    elevation="10"
-    class="mx-auto"
-    height="50"
-    width="50"
-  ></v-sheet>
+    <v-sheet
+        @click="changeColor()"
+        :color="color"
+        elevation="10"
+        class="mx-auto"
+        height="50"
+        width="50"
+    ></v-sheet>
 </template>
 
 <script>
@@ -14,26 +14,38 @@ export default {
     name: 'Block',
     data() {
         return {
-            colors: ['white', 'black', 'red', 'green'],
-            index: 0
+            colorIndex: 0,
+            blockColors: ['white', 'black', 'red', 'green']
         };
     },
-    props: {
-        border: Boolean
-    },
+    props: ['id'],
     computed: {
         color: function() {
             if (this.border === true) {
                 return 'black';
             }
-            return this.colors[this.index];
+            return this.blockColors[this.colorIndex];
+        },
+        border() {
+            return this.$store.state.sevenBlocks[this.id].border;
         }
     },
     methods: {
-        cycleColor: function() {
+        changeColor: function() {
             if (this.border === false) {
-                if (this.index == 3) this.index = 0;
-                else this.index++;
+                if (this.colorIndex == 3) {
+                    this.colorIndex = 0;
+                    this.$store.commit('updateBlockColor', {
+                        id: this.id,
+                        color: this.blockColors[this.colorIndex]
+                    });
+                } else {
+                    this.colorIndex++;
+                    this.$store.commit('updateBlockColor', {
+                        id: this.id,
+                        color: this.blockColors[this.colorIndex]
+                    });
+                }
             }
         }
     }

@@ -31,9 +31,9 @@
             <v-btn
                 flat
                 class="hidden-sm-and-down"
-                href="https://en.wikipedia.org/wiki/Depth-first_search"
+                href="https://en.wikipedia.org/wiki/Breadth-first_search"
                 target="_blank"
-                >About DFS</v-btn
+                >About BFS</v-btn
             >
             <v-btn
                 color="blue-grey lighten-3"

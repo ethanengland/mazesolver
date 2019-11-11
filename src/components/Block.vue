@@ -27,7 +27,7 @@ export default {
             return this.blockColors[this.colorIndex];
         },
         border() {
-            return this.$store.state.sevenBlocks[this.id].border;
+            return this.$store.getters.getBlocks[this.id].border;
         }
     },
     methods: {

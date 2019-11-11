@@ -9,13 +9,12 @@
                 @change="updateMazeSize(mazeSize)"
             ></v-select>
         </v-layout>
-
         <v-layout justify-center>
-            <maze />
+            <maze :width="mazeSize.split(' ')[0]" :height="mazeSize.split(' ')[2]" />
         </v-layout>
         <div />
         <v-layout justify-center>
-            <v-btn raised="true" round="true" dark="true" color="blue-grey"
+            <v-btn @click="solve" raised="true" round="true" dark="true" color="blue-grey"
                 >Solve</v-btn
             >
         </v-layout>
@@ -24,6 +23,7 @@
 
 <script>
 import Maze from '../components/Maze';
+import Graph from '../graph';
 export default {
     data() {
         return {
@@ -39,7 +39,9 @@ export default {
                 height: sizes[2]
             });
         },
-        solve() {}
+        solve() {
+            this.$store.commit('solveMaze')
+        }
     },
     components: {
         Maze

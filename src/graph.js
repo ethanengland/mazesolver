@@ -18,7 +18,6 @@ export default class Graph {
 
     // add edge to the graph
     addEdge(v, w) {
-        debugger
         // get the list for vertex v and put the
         // vertex w denoting edge between v and w
         this.AdjList.get(v).push(w);
@@ -54,6 +53,8 @@ export default class Graph {
         var pred = [];
         for (var i = 0; i < this.noOfVertices; i++) visited[i] = false;
 
+        debugger
+
         // Create an object for queue
         var q = new Queue();
 
@@ -85,5 +86,23 @@ export default class Graph {
                 }
             }
         }
+    }
+}
+
+class Queue extends Array {
+    enqueue(val) {
+        this.push(val);
+    }
+
+    dequeue() {
+        return this.shift();
+    }
+
+    peek() {
+        return this[0];
+    }
+
+    isEmpty() {
+        return this.length === 0;
     }
 }

@@ -22,7 +22,6 @@ export default new Vuex.Store({
             state.maze.getBlocks()[payload.id].color = payload.color;
         },
         updateMazeSize(state, payload) {
-            debugger
             state.maze = new Maze(payload.width, payload.height)
         },
         addVertices(state, payload) {

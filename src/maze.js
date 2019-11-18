@@ -6,26 +6,26 @@ export default class Maze {
         this.width = width
         this.height = height
         this.Maze = []
+        this.startId = null
+        this.endId = null
 
         let count = 0;
-        for(var i = 0; i < height; i++)
-        {
-            for(var j = 0; j < width; j++) {
-                if(i == 0 || i == height - 1 || j == 0 || j == height - 1) {
+        for (var i = 0; i < height; i++) {
+            for (var j = 0; j < width; j++) {
+                if (i == 0 || i == height - 1 || j == 0 || j == height - 1) {
                     this.Maze.push({
                         color: 'black',
                         border: true,
                         id: count
                     })
-                }
-                else {
+                } else {
                     this.Maze.push({
                         color: 'white',
                         border: false,
                         id: count
                     })
-                } 
-                count++; 
+                }
+                count++;
             }
         }
     }
@@ -40,33 +40,33 @@ export default class Maze {
 
     setupGraph() {
 
-        var graph = new Graph(this.width * this.height);
+        var graph = new Graph((this.width - 2) * (this.height - 2));
 
-        for(var i = 0; i < this.Maze.length; i++) {
-            
-            if(this.Maze[i].border == false)  graph.addVertex(this.Maze[i].id)
+        for (var i = 0; i < this.Maze.length; i++) {
+            if (this.Maze[i].border === false) graph.addVertex(this.Maze[i].id)
+            if (this.Maze[i].color === 'green') this.startId = this.Maze[i].id
+            if (this.Maze[i].color === 'red') this.endId = this.Maze[i].id
         }
 
-        debugger
-        for(var i = 0; i < this.Maze.length; i++) {
+        for (var i = 0; i < this.Maze.length; i++) {
+            debugger
             //add up edge
-            if(this.Maze.includes(i - 7)) 
-                if(this.Maze[i - 7].border == false)
-                    graph.addEdge(this.Maze[i].id, this.maze[i - 7].id)
+            if (i - 7 >= 0 && i - 7 <= this.Maze.length - 1)
+                if (this.Maze[i].color !== 'black' && this.Maze[i - 7].color !== 'black')
+                    graph.addEdge(this.Maze[i].id, this.Maze[i - 7].id)
             //add down edge
-            if(this.Maze.includes(i + 7)) 
-                if(this.Maze[i + 7].border == false)
-                    graph.addEdge(this.Maze[i].id, this.maze[i + 7].id)
+            if (i + 7 >= 0 && i + 7 <= this.Maze.length - 1)
+                if (this.Maze[i].color !== 'black' && this.Maze[i + 7].color !== 'black')
+                    graph.addEdge(this.Maze[i].id, this.Maze[i + 7].id)
             //add left edge
-            if(this.Maze.includes(i - 1)) 
-                if(this.Maze[i - 1].border == false)
-                    graph.addEdge(this.Maze[i].id, this.maze[i - 1].id)
+            if (i - 1 >= 0 && i - 1 <= this.Maze.length - 1)
+                if (this.Maze[i].border === false && this.Maze[i - 1].border === false)
+                    graph.addEdge(this.Maze[i].id, this.Maze[i - 1].id)
             //add right edge
-            if(this.Maze.includes(i + 1)) 
-                if(this.Maze[i + 1].border == false)
-                    graph.addEdge(this.Maze[i].id, this.maze[i + 1].id)
+            if (i + 1 >= 0 && i + 1 <= this.Maze.length - 1)
+                if (this.Maze[i].border === false && this.Maze[i + 1].border === false)
+                    graph.addEdge(this.Maze[i].id, this.Maze[i + 1].id)
         }
-
         return graph
 
     }
@@ -75,7 +75,7 @@ export default class Maze {
     solve() {
         var graph = this.setupGraph();
         graph.printGraph();
-        
+        graph.bfs(this.startId)
     }
 
 }
